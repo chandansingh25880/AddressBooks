@@ -5,6 +5,10 @@ package com.addressbook.bridgelab;
 public class AddressBook {
     public static void main(String[] args) {
         System.out.println("Welcome to address book system program");
+        Contact contact = new Contact("Chandan", "Singh", "Milling Tonia road",
+                "Lucknow", "UP", 226001,
+                8887719063L, "chandan@gmail.com");
+        System.out.println(contact.toString());
 
     }
 }
