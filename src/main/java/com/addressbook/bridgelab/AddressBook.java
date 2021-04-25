@@ -7,14 +7,29 @@ import java.util.Scanner;
 /* @Description - To create a contacts in address book with first name, last name, address, city, state,
  * zip,mobile number.*/
 public class AddressBook {
-    public static void main(String[] args) {
-        System.out.println("Welcome to address book system program");
-        Contact contact = new Contact("Chandan", "Singh", "Milling Tonia road",
-                "Lucknow", "UP", 226001,
-                8887719063L, "chandan@gmail.com");
-        System.out.println(contact.toString());
-
+    AddressBook addressbook = new AddressBook();
+        addressbook.addContact();
+    int choice = 1;
+        do {
+        System.out.println("Enter your choice\n1. Add Contact\n2. Edit Contact\n3. Delete Contact\n3. Exit");
+        int userInput = sc.nextInt();
+        switch (userInput) {
+            case 1:
+                addressbook.addContact();
+                break;
+            case 2:
+                addressbook.editContact();
+                break;
+            case 3 :
+                addressbook.deleteContact();
+                break;
+            default:
+                System.out.println("You press exit.\nThank You!");
+                choice = 0;
+                break;
+        }
     }
+
 
     /* @Description- Add new contacts in address book  */
     private void addContact() {
@@ -39,6 +54,20 @@ public class AddressBook {
         System.out.println("contact successfully added");
 
     }
+    /* Description - delete contacts in address book  using their name */
+    public void deleteContact() {
+        if (Contact.isEmpty()) {
+            System.out.println("Contact list is empty.");
+        } else {
+            System.out.println("Enter the first name to delete contact.");
+            String name = sc.next();
+            Iterator<Integer> itr = Contact.keySet().iterator();
+            while(itr.hasNext()) {
+                int key = itr.next();
+                if (Contact.get(key).firstName.equals(name)) {
+                    Contact.remove(key);
+                    System.out.println("Contact deleted with first name : "+name);
+                }
 
     /* Description - edit contacts address book */
     public void editContact() {

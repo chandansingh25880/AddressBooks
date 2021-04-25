@@ -36,6 +36,10 @@ public class Contact {
 
     }
 
+    public static void remove(int key) {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
