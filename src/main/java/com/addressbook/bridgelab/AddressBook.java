@@ -66,50 +66,67 @@ public class AddressBook {
                 int key = itr.next();
                 if (Contact.get(key).firstName.equals(name)) {
                     Contact.remove(key);
-                    System.out.println("Contact deleted with first name : "+name);
+                    System.out.println("Contact deleted with first name : " + name);
                 }
 
-    /* Description - edit contacts address book */
-    public void editContact() {
-        if (Contact.isEmpty()) {
-            System.out.println("Contact list is empty.");
-        } else {
-            System.out.println("Enter the first name to edit contact.");
-            Scanner sc;
-            String name = sc.next();
-            HashMap<Object, Object> contact;
-            Iterator<Object> itr = Contact.keySet().iterator();
-            while (itr.hasNext()) {
-                Object key = itr.next();
-                if (Contact.get(key).firstName.equals(name)) {
-                    System.out.println("\nEnter First Name to Edit");
-                    String first = sc.next();
-                    sc.nextLine();
-                    System.out.println("Enter Last Name to Edit");
-                    String last = sc.next();
-                    sc.nextLine();
-                    System.out.println("Enter Address to Edit");
-                    String address = sc.next();
-                    sc.nextLine();
-                    System.out.println("Enter City to Edit");
-                    String city = sc.nextLine();
-                    System.out.println("Enter State to Edit");
-                    String state = sc.next();
-                    sc.nextLine();
-                    System.out.println("Enter Zip Code to Edit");
-                    int zip = sc.nextInt();
-                    System.out.println("Enter Phone Number to Edit");
-                    long phone = sc.nextLong();
-                    System.out.println("Enter E-mail to Edit");
-                    String email = sc.next();
-                    Contact Contact = new Contact(first, last, address, city, state, zip, phone, email);
-                    Contact.put(key, Contact);
-                    System.out.println("Contact edited with given first name : " + name);
+                private boolean check (String firstName){
+                    if (contact.isEmpty())
+                        return false;
+                    else {
+                        System.out.println("\nAdd contact again with different first name.");
+                        Iterator<Integer> itr = contacts.keySet().iterator();
+                        while (((Iterator<?>) itr).hasNext()) {
+                            int key = itr.next();
+                            if (Contact.get(key).firstName.equals(check(firstName))) {
+                                System.out.println("\nAdd contact again with different first name.");
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+
+                /* Description - edit contacts address book */
+                public void editContact () {
+                    if (Contact.isEmpty()) {
+                        System.out.println("Contact list is empty.");
+                    } else {
+                        System.out.println("Enter the first name to edit contact.");
+                        Scanner sc;
+                        String name = sc.next();
+                        HashMap<Object, Object> contact;
+                        Iterator<Object> itr = Contact.keySet().iterator();
+                        while (itr.hasNext()) {
+                            Object key = itr.next();
+                            if (Contact.get(key).firstName.equals(name)) {
+                                System.out.println("\nEnter First Name to Edit");
+                                String first = sc.next();
+                                sc.nextLine();
+                                System.out.println("Enter Last Name to Edit");
+                                String last = sc.next();
+                                sc.nextLine();
+                                System.out.println("Enter Address to Edit");
+                                String address = sc.next();
+                                sc.nextLine();
+                                System.out.println("Enter City to Edit");
+                                String city = sc.nextLine();
+                                System.out.println("Enter State to Edit");
+                                String state = sc.next();
+                                sc.nextLine();
+                                System.out.println("Enter Zip Code to Edit");
+                                int zip = sc.nextInt();
+                                System.out.println("Enter Phone Number to Edit");
+                                long phone = sc.nextLong();
+                                System.out.println("Enter E-mail to Edit");
+                                String email = sc.next();
+                                Contact Contact = new Contact(first, last, address, city, state, zip, phone, email);
+                                Contact.put(key, Contact);
+                                System.out.println("Contact edited with given first name : " + name);
+                            }
+                        }
+                    }
                 }
             }
-        }
-    }
-}
 
 
 
