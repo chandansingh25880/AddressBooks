@@ -11,6 +11,7 @@ public class Contact {
     private int zip;
     private long mobileNumber;
     private String emailId;
+    private Object key;
 
     public Contact(String firstName, String lastName, String address, String city, String state, int zip, long mobileNumber, String emailId) {
         this.firstName = firstName;
@@ -21,6 +22,18 @@ public class Contact {
         this.zip = zip;
         this.mobileNumber = mobileNumber;
         this.emailId = emailId;
+    }
+
+    public static Iterable<Object> keySet() {
+        return keySet();
+    }
+
+    public static boolean isEmpty() {
+    }
+
+    public static Object get(Object key) {
+        this.key = key;
+
     }
 
     public String getFirstName() {
@@ -91,5 +104,8 @@ public class Contact {
     public String toString() {
         return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", state="
                 + state + ", city=" + city + ", zipCode=" + zip + ", number=" + mobileNumber + ", email=" + emailId + "]";
+    }
+
+    public void put(int indexValue, Contact contacts) {
     }
 }
